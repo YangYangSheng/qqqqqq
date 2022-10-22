@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+<resultMap id="userResultMap" type="common.User">
+    <result column="use_name" property="userId"></result>
+    <result column="password" property="passwd"></result>
+</resultMap>
+    <insert id="insertUser" >
+        insert into tb_user(use_name,password)values (#{userId},#{passwd})
+    </insert>
+    <select id="selectByNamePwd" resultMap="userResultMap">
+        select * from tb_user where use_name = #{userId} and password = #{passwd}
+    </select>
+    <select id="selectByuseName" resultMap="userResultMap">
+        select * from tb_user where use_name = #{userId}
+    </select>
+</mapper>
